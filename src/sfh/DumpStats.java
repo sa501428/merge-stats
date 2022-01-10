@@ -12,6 +12,7 @@ public class DumpStats {
         try {
             BufferedWriter out = new BufferedWriter(new FileWriter(args[1]));
             out.write(ds.getStatistics());
+            //System.out.println(ds.getGraphs());
             out.close();
         } catch (Exception e) {
             System.err.println("Unable to print stats: " + e.getLocalizedMessage());
