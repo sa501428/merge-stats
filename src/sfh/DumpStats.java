@@ -16,6 +16,7 @@ public class DumpStats {
             out.close();
         } catch (Exception e) {
             System.err.println("Unable to print stats: " + e.getLocalizedMessage());
+            System.err.println("Usage: java -jar stats-from-hic.jar <in.hic> <inter_stem>");
         }
     }
 }
