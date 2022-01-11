@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class DumpStats {
+public class MergeStats {
     public static void main(String[] args) {
         if (args.length < 2) {
             System.err.println("Usage: java -jar stats-from-hic.jar <inter_stem> <in.hic> [... in2.hic in3.hic]");
