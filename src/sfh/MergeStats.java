@@ -17,8 +17,7 @@ import java.util.stream.Collectors;
 public class MergeStats {
     public static void main(String[] args) {
         if (args.length < 2) {
-            System.err.println("Usage: java -jar stats-from-hic.jar <inter_stem> <in.hic> [... in2.hic in3.hic]");
-            System.exit(4);
+            printUsageAndExit(4);
         }
 
         boolean isHIC = args[1].toLowerCase().endsWith(".hic");
@@ -73,10 +72,10 @@ public class MergeStats {
     }
 
     private static void printUsageAndExit(int code) {
-        System.err.println("Usage: java -jar merge-stats.jar <stem> <inter.hic> [inter2.hic ...]");
-        System.err.println("Usage: java -jar merge-stats.jar <stem> <inter.txt> [inter2.txt ...]");
-        System.err.println("Usage: java -jar merge-stats.jar <stem> <inter_hists.m> [inter2_hists.m ...]");
-        System.err.println("Stem: \"inter\" (or \"inter_30\") if inputs are mapq1 (or mapq30)");
+        System.err.println("Usage:\n\tjava -jar merge-stats.jar <stem> <inter.hic> [inter2.hic ...]");
+        System.err.println("\tjava -jar merge-stats.jar <stem> <inter.txt> [inter2.txt ...]");
+        System.err.println("\tjava -jar merge-stats.jar <stem> <inter_hists.m> [inter2_hists.m ...]");
+        System.err.println("\tstem: \"inter\" if inputs are mapq1 or \"inter_30\" if inputs are mapq30");
         System.exit(code);
     }
 
