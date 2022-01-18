@@ -2,11 +2,13 @@ package sfh.merger;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.StringTokenizer;
 
 public abstract class StatsMerger extends Merger {
     public static int NUM_FIELDS = 28;
-    ;
+    private final NumberFormat nf = NumberFormat.getNumberInstance(Locale.US);
     private final long[] statistics = new long[NUM_FIELDS];
 
     public void parse(String s) {
@@ -92,20 +94,25 @@ public abstract class StatsMerger extends Merger {
     protected void write(BufferedWriter statsOut, String description, STATS_LABEL valType, long denom, long denom2) throws IOException {
         long value = statistics[valType.ordinal()];
         if (value > 0) {
+            String valString = commify(value);
             if (denom > 0) {
                 if (denom2 > 0) {
-                    statsOut.write(description + value + " (" + percent(value, denom) + " / " + percent(value, denom2) + ")\n");
+                    statsOut.write(description + valString + " (" + percent(value, denom) + " / " + percent(value, denom2) + ")\n");
                 } else {
-                    statsOut.write(description + value + " (" + percent(value, denom) + ")\n");
+                    statsOut.write(description + valString + " (" + percent(value, denom) + ")\n");
                 }
             } else {
-                statsOut.write(description + value + "\n");
+                statsOut.write(description + valString + "\n");
             }
         }
     }
 
     private String percent(long num, long total) {
         return String.format("%.2f", num * 100f / total) + "%";
+    }
+
+    private String commify(long value) {
+        return nf.format(value);
     }
 
     public enum STATS_LABEL {
