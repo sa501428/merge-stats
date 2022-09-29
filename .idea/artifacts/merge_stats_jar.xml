@@ -3,7 +3,7 @@
     <output-path>$PROJECT_DIR$/out/artifacts/merge_stats_jar</output-path>
     <root id="archive" name="merge-stats.jar">
       <element id="module-output" name="stats-from-hic" />
-      <element id="extracted-dir" path="$PROJECT_DIR$/lib/java-straw.2.4.3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/lib/java-straw.2.21.00.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>

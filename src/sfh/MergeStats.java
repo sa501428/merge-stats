@@ -29,7 +29,7 @@ public class MergeStats {
         List<String> graphsList = new ArrayList<>();
         if (isHIC) {
             for (int i = 1; i < args.length; i++) {
-                Dataset ds = HiCFileTools.extractDatasetForCLT(args[i], false, false);
+                Dataset ds = HiCFileTools.extractDatasetForCLT(args[i], false, false, false);
                 statsList.add(ds.getStatistics());
                 graphsList.add(ds.getGraphs());
             }
